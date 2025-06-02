@@ -108,3 +108,13 @@ def taxi_trip_silver():
             "trip_distance_km", F.round(F.col("trip_distance") * 1.60934, 2)
         )  # 1 mile = 1.60934 km
     ).join(dlt.read("raw_driver_data"), on="taxi_number", how="left")
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC
+# MAGIC SELECT * FROM __apply_changes_storage_taxi_trip_data_merged;
+
+# COMMAND ----------
+
+

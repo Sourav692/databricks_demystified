@@ -60,3 +60,7 @@ dbutils.fs.rm("/tmp/chp_02/taxi_data_chkpnt", recurse=True)
 dbutils.fs.rm("/tmp/chp_02/", True)
 spark.sql("DROP SCHEMA IF EXISTS hive_metastore.chp_02 CASCADE")
 
+
+# COMMAND ----------
+
+
