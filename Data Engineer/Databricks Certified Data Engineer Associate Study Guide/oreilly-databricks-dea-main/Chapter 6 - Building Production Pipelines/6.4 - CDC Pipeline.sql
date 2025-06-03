@@ -4,7 +4,7 @@
 
 -- COMMAND ----------
 
-SET school.dataset_path=dbfs:/mnt/DE-Associate-Book/datasets/school;
+SET school.dataset_path=/Volumes/dlt/oreilly-databricks-dea/school;
 
 -- COMMAND ----------
 

@@ -12,7 +12,7 @@
 
 -- COMMAND ----------
 
-SET school.dataset_path=dbfs:/mnt/DE-Associate-Book/datasets/school;
+SET school.dataset_path=/Volumes/dlt/oreilly-databricks-dea/school;
 
 -- COMMAND ----------
 
@@ -26,9 +26,14 @@ SET school.dataset_path=dbfs:/mnt/DE-Associate-Book/datasets/school;
 
 -- COMMAND ----------
 
+-- %python
+-- dbutils.fs.ls("s3a://uc-working-group-workspace-root-bucket/ireland-prod/3782931733495456/enrollments-dlt-raw")
+
+-- COMMAND ----------
+
 CREATE OR REFRESH STREAMING TABLE enrollments_raw
 COMMENT "The raw courses enrollments, ingested from enrollments-dlt-raw folder"
-AS SELECT * FROM cloud_files("${school.dataset_path}/enrollments-dlt-raw",
+AS SELECT * FROM cloud_files("/Volumes/dlt/oreilly-databricks-dea/school/enrollments-dlt-raw",
                             "json",
                             map("cloudFiles.inferColumnTypes", "true"))
 
@@ -41,7 +46,7 @@ AS SELECT * FROM cloud_files("${school.dataset_path}/enrollments-dlt-raw",
 
 CREATE OR REPLACE MATERIALIZED VIEW students
 COMMENT "The students lookup table, ingested from students-json"
-AS SELECT * FROM json.`${school.dataset_path}/students-json`
+AS SELECT * FROM json.`/Volumes/dlt/oreilly-databricks-dea/school/students-json`
 
 -- COMMAND ----------
 
@@ -100,3 +105,7 @@ AS
  FROM LIVE.enrollments_cleaned
  WHERE country = "France"
  GROUP BY student_id, f_name, l_name, date_trunc("DD", formatted_timestamp)
+
+-- COMMAND ----------
+
+

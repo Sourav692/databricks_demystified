@@ -14,3 +14,7 @@ load_new_json_data()
 
 # MAGIC %sql
 # MAGIC SELECT * from json.`${dataset.school}/courses-cdc/02.json`
+
+# COMMAND ----------
+
+

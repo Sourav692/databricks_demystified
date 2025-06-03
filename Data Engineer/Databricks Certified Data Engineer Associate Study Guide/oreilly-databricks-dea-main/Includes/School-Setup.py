@@ -5,7 +5,7 @@
 # COMMAND ----------
 
 data_source_uri = "s3://dalhussein-books/DEA-Book/datasets/school/v1/"
-dataset_school = 'dbfs:/mnt/DE-Associate-Book/datasets/school'
+dataset_school = '/Volumes/dlt/oreilly-databricks-dea/school'
 checkpoint_path = 'dbfs:/mnt/DEA-Book/checkpoints'
 dlt_path = 'dbfs:/mnt/DEA-Book/dlt'
 db_name = 'DE_Associate_School'
@@ -134,7 +134,11 @@ def load_new_json_data(all=False):
 
 download_dataset(data_source_uri, dataset_school)
 
-spark.sql(f"CREATE SCHEMA IF NOT EXISTS {db_name}")
-spark.sql(f"USE {db_name}")
-print()
-print(f"Schema name: hive_metastore.{db_name}")
+# spark.sql(f"CREATE SCHEMA IF NOT EXISTS {db_name}")
+# spark.sql(f"USE {db_name}")
+# print()
+# print(f"Schema name: hive_metastore.{db_name}")
+
+# COMMAND ----------
+
+
